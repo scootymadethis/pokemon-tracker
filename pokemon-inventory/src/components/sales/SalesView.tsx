@@ -189,6 +189,7 @@ export default function SalesView() {
                   setForm((p) => ({ ...p, quantity: Number(e.target.value) }))
                 }
                 placeholder="es. 1"
+                min={1}
               />
             </Field>
 
@@ -207,37 +208,53 @@ export default function SalesView() {
               )}
             </Select>
 
-            <Input
-              type="number"
-              inputMode="decimal"
-              value={String(form.sold_price_eur)}
-              onChange={(e) =>
-                setForm((p) => ({
-                  ...p,
-                  sold_price_eur: Number(e.target.value),
-                }))
-              }
-              placeholder="Prezzo vendita (€)"
-            />
-            <Input
-              type="number"
-              inputMode="decimal"
-              value={String(form.shipping_eur)}
-              onChange={(e) =>
-                setForm((p) => ({ ...p, shipping_eur: Number(e.target.value) }))
-              }
-              placeholder="Spedizione incassata (€)"
-            />
+            <Field label="Prezzo vendita (€)">
+              <Input
+                type="number"
+                inputMode="decimal"
+                value={String(form.sold_price_eur)}
+                onChange={(e) =>
+                  setForm((p) => ({
+                    ...p,
+                    sold_price_eur: Number(e.target.value),
+                  }))
+                }
+                placeholder="es. 49.90"
+                min={0}
+                step="0.01"
+              />
+            </Field>
 
-            <Input
-              type="number"
-              inputMode="decimal"
-              value={String(form.fees_eur)}
-              onChange={(e) =>
-                setForm((p) => ({ ...p, fees_eur: Number(e.target.value) }))
-              }
-              placeholder="Fee (€)"
-            />
+            <Field label="Spedizione incassata (€)">
+              <Input
+                type="number"
+                inputMode="decimal"
+                value={String(form.shipping_eur)}
+                onChange={(e) =>
+                  setForm((p) => ({
+                    ...p,
+                    shipping_eur: Number(e.target.value),
+                  }))
+                }
+                placeholder="es. 4.90"
+                min={0}
+                step="0.01"
+              />
+            </Field>
+
+            <Field label="Fee (€)">
+              <Input
+                type="number"
+                inputMode="decimal"
+                value={String(form.fees_eur)}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, fees_eur: Number(e.target.value) }))
+                }
+                placeholder="es. 2.50"
+                min={0}
+                step="0.01"
+              />
+            </Field>
 
             <div className="sm:col-span-2">
               <Textarea
